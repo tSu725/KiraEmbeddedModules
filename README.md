@@ -1,28 +1,28 @@
 # KiraEmbeddedModules
 
-Репозиторий содержит модульную реализацию прошивки/мини-ОС для платформы **M5Stack Cardputer Adv** (на базе ESP32-S3) с использованием фреймворка **ESP-IDF**.
+The repository contains a modular firmware/mini-OS implementation for the **M5Stack Cardputer Adv** platform (based on ESP32-S3) using the **ESP-IDF** framework.
 
-## Структура проекта и компоненты
+## Project structure and components
 
-Проект построен по модульной схеме ESP-IDF. Вся низкоуровневая логика скрыта внутри изолированных компонентов в папке `components/`:
+The project is built according to the ESP-IDF modular scheme. All low-level logic is hidden inside isolated components in the `components/` folder:
 
-*   **`main/`** — точка входа приложения (`app_main`), координирующая работу модулей.
-*   **`components/myi2c/`** — компонент инициализации общей мастер-шины I2C. Создает глобальный хэндл шины, доступный для других аппаратных модулей.
-*   **`components/tca8418/`** — драйвер контроллера матричной клавиатуры TCA8418. Работает с аппаратным FIFO чипа, фильтрует события отпускания кнопок и предоставляет операционной системе чистые коды нажатий.
+* **`main/`** is the application entry point (`app_main') that coordinates the operation of the modules.
+* **`components/myi2c/`** is the initialization component of the common I2C master bus. Creates a global bus handle that is accessible to other hardware modules.
+* **`components/tca8418/`** is the TCA8418 matrix keyboard controller driver. It works with the hardware FIFO of the chip, filters button release events and provides the operating system with clean pressing codes.
 
 
-## Сборка и прошивка
+## Assembly and firmware
 
-Для компиляции необходим установленный инструмент разработки **ESP-IDF** (v5.x).
+The development tool **ESP-IDF** (v5.x) is required for compilation.
 
 ```bash
-# Очистка кэша и конфигурация проекта
+# Clearing the cache and configuring the project
 idf.py fullclean
 idf.py reconfigure
 
-# Компиляция прошивки
+# Firmware compilation
 idf.py build
 
-# Запись в контроллер и запуск монитора порта
-idf.py -p /dev/cu.usbmodemXXXX flash monitor
-```
+# Writing to the controller and starting
+the port monitor idf.py -p /dev/cu.usbmodemXXXX flash monitor
+``
