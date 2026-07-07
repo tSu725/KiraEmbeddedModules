@@ -1,0 +1,7 @@
+.DS_Store
+.AppleDouble
+.LSOverride
+build/
+sdkconfig
+sdkconfig.old
+.vscode/
