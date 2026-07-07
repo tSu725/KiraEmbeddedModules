@@ -25,4 +25,4 @@ idf.py build
 
 # Writing to the controller and starting
 the port monitor idf.py -p /dev/cu.usbmodemXXXX flash monitor
-``
+```
